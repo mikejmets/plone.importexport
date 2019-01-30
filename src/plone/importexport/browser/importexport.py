@@ -152,7 +152,6 @@ class ImportExportView(BrowserView):
     def export(self):
 
         global MUST_INCLUDED_ATTRIBUTES
-        errors = []
 
         # create zip in memory
         self.zip = utils.InMemoryZip()
@@ -488,8 +487,6 @@ class ImportExportView(BrowserView):
 
         objData = self.serialize(self.context)
         data = objData[:-1]
-        if objData[-1] != '':
-            errorLog = objData[-1]
 
         conversion = utils.Pipeline()
         head = conversion.getcsvheaders(data)
